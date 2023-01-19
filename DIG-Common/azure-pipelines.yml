@@ -51,16 +51,6 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
     
-
-- task: SonarCloudPrepare@1
-  displayName: 'Initialiseer SonarCloud'
-  inputs:
-    SonarCloud: 'SonarCloud BDMCC'
-    organization: 'bdmcc'
-    scannerMode: 'MSBuild'
-    projectKey: 'DIG-Common'
-    projectName: 'DIG - Common - Logius'
-
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
@@ -73,9 +63,3 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: SonarCloudAnalyze@1
-
-- task: SonarCloudPublish@1
-  displayName: 'Publiceer data naar SonarCloud.'
-  inputs:
-    pollingTimeoutSec: '300'
